@@ -25,30 +25,30 @@ namespace ConsoleUI
 
             //EfColorDal efColorDal = new EfColorDal();
             //efColorDal.Add(new Colors { ColorName = "Siyah" });
-            //ColorManager colorManager = new ColorManager(efColorDal);
-            
-
-            //foreach (var color in colorManager.GetAll())
-            //{
-            //    Console.WriteLine(color.ColorName);
-            //}
+            ColorManager colorManager = new ColorManager(new EfColorDal());
 
 
-            EfBrandDal efBrandDal = new EfBrandDal();
-            Console.WriteLine("Marka Giriniz (Min 2 Karakter): ");
-            BrandManager brandManager = new BrandManager(efBrandDal);
-            brandManager.Add(new Brand { BrandName = Console.ReadLine() });
-            
-
-            foreach (var brands in brandManager.GetAll())
+            foreach (var color in colorManager.GetAll())
             {
-                Console.WriteLine(brands.BrandName);
+                Console.WriteLine(color.ColorName);
             }
 
-            EfCarDal efCarDal = new EfCarDal();
-            Console.WriteLine("Araç fiyat bilgisi giriniz (Girilen değer 0'dan büyük olmalıdır!) : ");
-            CarManager carManager = new CarManager(efCarDal);
-            carManager.Add(new Car { BrandId = Convert.ToInt32(Console.ReadLine()), ColorId = Convert.ToInt32(Console.ReadLine()), DailyPrice = Convert.ToInt32(Console.ReadLine()), ModelYear = Convert.ToInt32(Console.ReadLine()), Description = "" });
+
+            //EfBrandDal efBrandDal = new EfBrandDal();
+            //Console.WriteLine("Marka Giriniz (Min 2 Karakter): ");
+            //BrandManager brandManager = new BrandManager(efBrandDal);
+            //brandManager.Add(new Brand { BrandName = Console.ReadLine() });
+
+
+            //foreach (var brands in brandManager.GetAll())
+            //{
+            //    Console.WriteLine(brands.BrandName);
+            //}
+
+            //EfCarDal efCarDal = new EfCarDal();
+            //Console.WriteLine("Araç fiyat bilgisi giriniz (Girilen değer 0'dan büyük olmalıdır!) : ");
+            //CarManager carManager = new CarManager(efCarDal);
+            //carManager.Add(new Car { BrandId = Convert.ToInt32(Console.ReadLine()), ColorId = Convert.ToInt32(Console.ReadLine()), DailyPrice = Convert.ToInt32(Console.ReadLine()), ModelYear = Convert.ToInt32(Console.ReadLine()), Description = "" });
 
         }
 
