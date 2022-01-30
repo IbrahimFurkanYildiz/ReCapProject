@@ -16,7 +16,7 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
-        public bool Add(Cars entity)
+        public bool Add(Car entity)
         {
             if (entity.DailyPrice > 0)
             {
@@ -30,17 +30,17 @@ namespace Business.Concrete
             }
         }
 
-        public List<Cars> GetAll()
+        public List<Car> GetAll()
         {
             return _carDal.GetAll();
         }
 
-        public List<Cars> GetCarsByBrandId(int id)
+        public List<Car> GetCarsByBrandId(int id)
         {
             return _carDal.GetAll(c => c.BrandId == id);
         }
 
-        public List<Cars> GetCarsByColorId(int id)
+        public List<Car> GetCarsByColorId(int id)
         {
             return _carDal.GetAll(c => c.ColorId == id);
         }

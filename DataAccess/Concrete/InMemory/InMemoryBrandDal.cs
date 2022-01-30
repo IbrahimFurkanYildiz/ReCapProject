@@ -10,47 +10,47 @@ namespace DataAccess.Concrete.InMemory
 {
     public class InMemoryBrandDal : IBrandDal
     {
-        List<Brands> _brands;
+        List<Brand> _brands;
 
         public InMemoryBrandDal()
         {
-            _brands = new List<Brands>
+            _brands = new List<Brand>
             {
-                new Brands{Id=1,BrandName="BMW"},
-                new Brands{Id=2,BrandName="Audi"},
-                new Brands{Id=3,BrandName="Mercedes"}
+                new Brand{Id=1,BrandName="BMW"},
+                new Brand{Id=2,BrandName="Audi"},
+                new Brand{Id=3,BrandName="Mercedes"}
             };
         }
 
-        public void Add(Brands brand)
+        public void Add(Brand brand)
         {
             _brands.Add(brand);
         }
 
-        public void Delete(Brands brand)
+        public void Delete(Brand brand)
         {
-            Brands brandToDelete = _brands.First(b => b.Id == brand.Id);
+            Brand brandToDelete = _brands.First(b => b.Id == brand.Id);
             _brands.Remove(brandToDelete);
         }
 
-        public Brands Get(Expression<Func<Brands, bool>> filter)
+        public Brand Get(Expression<Func<Brand, bool>> filter)
         {
             throw new NotImplementedException();
         }
 
-        public List<Brands> GetAll()
+        public List<Brand> GetAll()
         {
             return _brands;
         }
 
-        public List<Brands> GetAll(Expression<Func<Brands, bool>> filter = null)
+        public List<Brand> GetAll(Expression<Func<Brand, bool>> filter = null)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(Brands brand)
+        public void Update(Brand brand)
         {
-            Brands brandToUpdate = _brands.First(b => b.Id == brand.Id);
+            Brand brandToUpdate = _brands.First(b => b.Id == brand.Id);
             brandToUpdate.BrandName = brand.BrandName;
         }
     }

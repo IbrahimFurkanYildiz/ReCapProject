@@ -37,7 +37,7 @@ namespace ConsoleUI
             EfBrandDal efBrandDal = new EfBrandDal();
             Console.WriteLine("Marka Giriniz (Min 2 Karakter): ");
             BrandManager brandManager = new BrandManager(efBrandDal);
-            brandManager.Add(new Brands { BrandName = Console.ReadLine() });
+            brandManager.Add(new Brand { BrandName = Console.ReadLine() });
             
 
             foreach (var brands in brandManager.GetAll())
@@ -48,7 +48,7 @@ namespace ConsoleUI
             EfCarDal efCarDal = new EfCarDal();
             Console.WriteLine("Araç fiyat bilgisi giriniz (Girilen değer 0'dan büyük olmalıdır!) : ");
             CarManager carManager = new CarManager(efCarDal);
-            carManager.Add(new Cars { BrandId = Convert.ToInt32(Console.ReadLine()), ColorId = Convert.ToInt32(Console.ReadLine()), DailyPrice = Convert.ToInt32(Console.ReadLine()), ModelYear = Convert.ToInt32(Console.ReadLine()), Description = "" });
+            carManager.Add(new Car { BrandId = Convert.ToInt32(Console.ReadLine()), ColorId = Convert.ToInt32(Console.ReadLine()), DailyPrice = Convert.ToInt32(Console.ReadLine()), ModelYear = Convert.ToInt32(Console.ReadLine()), Description = "" });
 
         }
 

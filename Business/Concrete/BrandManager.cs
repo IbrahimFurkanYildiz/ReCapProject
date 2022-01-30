@@ -16,7 +16,7 @@ namespace Business.Concrete
             _brandDal = brandDal;
         }
 
-        public bool Add(Brands entity)
+        public bool Add(Brand entity)
         {
 
             if (entity.BrandName.Length > 2)
@@ -31,7 +31,7 @@ namespace Business.Concrete
             }
         }
 
-        public List<Brands> GetAll()
+        public List<Brand> GetAll()
         {
             return _brandDal.GetAll();
         }

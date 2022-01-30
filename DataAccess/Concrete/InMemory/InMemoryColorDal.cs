@@ -10,47 +10,47 @@ namespace DataAccess.Concrete.InMemory
 {
     public class InMemoryColorDal : IColorDal
     {
-        List<Colors> _colors;
+        List<Color> _colors;
 
         public InMemoryColorDal()
         {
-            _colors = new List<Colors>
+            _colors = new List<Color>
             { 
-                new Colors { Id=1,ColorName="Siyah"},
-                new Colors { Id=2,ColorName="Beyaz"},
-                new Colors { Id=3,ColorName="Mavi"}
+                new Color { Id=1,ColorName="Siyah"},
+                new Color { Id=2,ColorName="Beyaz"},
+                new Color { Id=3,ColorName="Mavi"}
             };
         }
 
-        public void Add(Colors color)
+        public void Add(Color color)
         {
             _colors.Add(color);
         }
 
-        public void Delete(Colors color)
+        public void Delete(Color color)
         {
-            Colors colorToDelete = _colors.SingleOrDefault(c => c.Id == color.Id);
+            Color colorToDelete = _colors.SingleOrDefault(c => c.Id == color.Id);
             _colors.Remove(colorToDelete);
         }
 
-        public Colors Get(Expression<Func<Colors, bool>> filter)
+        public Color Get(Expression<Func<Color, bool>> filter)
         {
             throw new NotImplementedException();
         }
 
-        public List<Colors> GetAll()
+        public List<Color> GetAll()
         {
             return _colors;
         }
 
-        public List<Colors> GetAll(Expression<Func<Colors, bool>> filter = null)
+        public List<Color> GetAll(Expression<Func<Color, bool>> filter = null)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(Colors color)
+        public void Update(Color color)
         {
-            Colors colorToUpdate = _colors.First(c => c.Id == color.Id);
+            Color colorToUpdate = _colors.First(c => c.Id == color.Id);
             colorToUpdate.ColorName = color.ColorName;
         }
     }

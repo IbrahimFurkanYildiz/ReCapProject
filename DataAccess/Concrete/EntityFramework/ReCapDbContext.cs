@@ -13,8 +13,8 @@ namespace DataAccess.Concrete.EntityFramework
             optionsBuilder.UseSqlServer("Server=.;Database=ReCapDb;User Id=sa;Password=1234;");
         }
 
-        public DbSet<Cars> Cars { get; set; } 
-        public DbSet<Colors> Colors { get; set; }
-        public DbSet<Brands> Brands { get; set; }
+        public DbSet<Car> Cars { get; set; } 
+        public DbSet<Color> Colors { get; set; }
+        public DbSet<Brand> Brands { get; set; }
     }
 }

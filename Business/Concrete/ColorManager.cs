@@ -16,7 +16,7 @@ namespace Business.Concrete
             _colorDal = colorDal;
         }
 
-        public List<Colors> GetAll()
+        public List<Color> GetAll()
         {
             return _colorDal.GetAll();
         }

@@ -7,7 +7,7 @@ namespace Business.Abstract
 {
     public interface IBrandService
     {
-        bool Add(Brands entity);
-        List<Brands> GetAll();
+        bool Add(Brand entity);
+        List<Brand> GetAll();
     }
 }

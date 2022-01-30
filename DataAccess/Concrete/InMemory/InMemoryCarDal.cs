@@ -10,50 +10,50 @@ namespace DataAccess.Concrete.InMemory
 {
     public class InMemoryCarDal : ICarDal
     {
-        List<Cars> _cars;
+        List<Car> _cars;
 
         public InMemoryCarDal()
         {
-            _cars = new List<Cars> 
+            _cars = new List<Car> 
             {
-                new Cars{Id=1,BrandId=1,ColorId=1,DailyPrice=400,ModelYear=1985,Description="B Sınıf"},
-                new Cars{Id=2,BrandId=1,ColorId=2,DailyPrice=200,ModelYear=1995,Description="A Sınıf"},
-                new Cars{Id=3,BrandId=2,ColorId=2,DailyPrice=500,ModelYear=1975,Description="C Sınıf"},
-                new Cars{Id=4,BrandId=2,ColorId=3,DailyPrice=600,ModelYear=1965,Description="B Sınıf"},
-                new Cars{Id=5,BrandId=3,ColorId=1,DailyPrice=900,ModelYear=2005,Description="C Sınıf"},
-                new Cars{Id=6,BrandId=3,ColorId=3,DailyPrice=200,ModelYear=2015,Description="A Sınıf"},
+                new Car{Id=1,BrandId=1,ColorId=1,DailyPrice=400,ModelYear=1985,Description="B Sınıf"},
+                new Car{Id=2,BrandId=1,ColorId=2,DailyPrice=200,ModelYear=1995,Description="A Sınıf"},
+                new Car{Id=3,BrandId=2,ColorId=2,DailyPrice=500,ModelYear=1975,Description="C Sınıf"},
+                new Car{Id=4,BrandId=2,ColorId=3,DailyPrice=600,ModelYear=1965,Description="B Sınıf"},
+                new Car{Id=5,BrandId=3,ColorId=1,DailyPrice=900,ModelYear=2005,Description="C Sınıf"},
+                new Car{Id=6,BrandId=3,ColorId=3,DailyPrice=200,ModelYear=2015,Description="A Sınıf"},
             };
         }
 
-        public void Add(Cars car)
+        public void Add(Car car)
         {
             _cars.Add(car);
         }
 
-        public void Delete(Cars car)
+        public void Delete(Car car)
         {
-            Cars carToDelete = _cars.First(c => c.Id == car.Id);
+            Car carToDelete = _cars.First(c => c.Id == car.Id);
             _cars.Remove(carToDelete);
         }
 
-        public Cars Get(Expression<Func<Cars, bool>> filter)
+        public Car Get(Expression<Func<Car, bool>> filter)
         {
             throw new NotImplementedException();
         }
 
-        public List<Cars> GetAll()
+        public List<Car> GetAll()
         {
             return _cars;
         }
 
-        public List<Cars> GetAll(Expression<Func<Cars, bool>> filter = null)
+        public List<Car> GetAll(Expression<Func<Car, bool>> filter = null)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(Cars car)
+        public void Update(Car car)
         {
-            Cars carToUpdate = _cars.First(c => c.Id == car.Id);
+            Car carToUpdate = _cars.First(c => c.Id == car.Id);
             carToUpdate.BrandId = car.BrandId;
             carToUpdate.ColorId = car.ColorId;
             carToUpdate.DailyPrice = car.DailyPrice;
