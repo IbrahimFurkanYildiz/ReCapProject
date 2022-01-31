@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
@@ -16,10 +17,24 @@ namespace Business.Concrete
             _colorDal = colorDal;
         }
 
-        public List<Color> GetAll()
+        public IResult Add(Color entity)
         {
-            return _colorDal.GetAll();
+            if (entity.ColorName.Length < 2)
+            {
+                return new ErrorDataResult<Color>("Renk ismi en az 3 karakter olmalıdır.");
+            }
+            _colorDal.Add(entity);
+            return new SuccessDataResult<Color>();
         }
 
+        public IDataResult<List<Color>> GetAll()
+        {
+            return new SuccessDataResult<List<Color>>(_colorDal.GetAll());
+        }
+
+        public IDataResult<Color> GetById(int colorId)
+        {
+            return new SuccessDataResult<Color>(_colorDal.Get(c => c.Id == colorId));
+        }
     }
 }

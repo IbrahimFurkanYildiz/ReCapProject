@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
@@ -17,38 +18,34 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
-        public bool Add(Car entity)
+        public IResult Add(Car entity)
         {
             if (entity.DailyPrice > 0)
             {
                 _carDal.Add(entity);
-                return true;
+                return new SuccessDataResult<Car>("Ekleme İşlemi Başarılı!");
             }
-            else
-            {
-                Console.WriteLine("Günlük limit değeri 0 ve aşağısı olamaz!"); 
-                return false;
-            }
+            return new ErrorDataResult<Car>("Günlük limit değeri 0 ve aşağısı olamaz!");
         }
 
-        public List<Car> GetAll()
+        public IDataResult<List<Car>> GetAll()
         {
-            return _carDal.GetAll();
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll());
         }
 
-        public List<CarDetailDto> GetCarDetails()
+        public IDataResult<List<CarDetailDto>> GetCarDetails()
         {
-            return _carDal.GetCarDetails();
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails());
         }
 
-        public List<Car> GetCarsByBrandId(int id)
+        public IDataResult<List<Car>> GetCarsByBrandId(int id)
         {
-            return _carDal.GetAll(c => c.BrandId == id);
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.BrandId == id));
         }
 
-        public List<Car> GetCarsByColorId(int id)
+        public IDataResult<List<Car>> GetCarsByColorId(int id)
         {
-            return _carDal.GetAll(c => c.ColorId == id);
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.ColorId == id));
         }
     }
 }
