@@ -10,7 +10,22 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
+            //TestCar();
+            TestUser();
+        }
 
+        private static void TestUser()
+        {
+            UserManager userManager = new UserManager(new EfUserDal());
+            //userManager.Add(new User { FirstName = "İbrahim", LastName = "YILDIZ", Password = "1234", Email = "ibrahim@gmail.com" });
+            foreach (var user in userManager.GetAll().Data)
+            {
+                Console.WriteLine(user.FirstName);
+            }
+        }
+
+        private static void TestCar()
+        {
             CarManager carManager = new CarManager(new EfCarDal());
             foreach (var car in carManager.GetCarDetails().Data)
             {
