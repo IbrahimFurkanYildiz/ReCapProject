@@ -19,8 +19,12 @@ namespace Business.Concrete
 
         public IResult Add(Rental entity)
         {
-            _rentalDal.Add(entity);
-            return new SuccessDataResult<Rental>();
+            if (entity.ReturnDate != null)
+            {
+                _rentalDal.Add(entity);
+                return new SuccessDataResult<Rental>();
+            }
+            return new ErrorDataResult<Rental>("Araç teslim edilmemiştir.");
         }
 
         public IDataResult<List<Rental>> GetAll()
