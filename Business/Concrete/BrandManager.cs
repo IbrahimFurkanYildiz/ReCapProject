@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.AutoFac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -17,14 +19,14 @@ namespace Business.Concrete
             _brandDal = brandDal;
         }
 
+        [ValidationAspect(typeof(BrandValidator))]
         public IResult Add(Brand entity)
         {
-            if (entity.BrandName.Length > 2)
-            {
-                _brandDal.Add(entity);
-                return new SuccessDataResult<Brand>("Ekleme Başarılı!");
-            }
-            return new ErrorDataResult<Brand>("Marka ismi en az 3 karakter olmalıdır!");
+
+            _brandDal.Add(entity);
+
+            return new SuccessDataResult<Brand>("Ekleme Başarılı!");
+
         }
 
         public IDataResult<List<Brand>> GetAll()

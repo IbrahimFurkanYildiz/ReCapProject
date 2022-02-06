@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.AutoFac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -17,14 +19,13 @@ namespace Business.Concrete
             _rentalDal = rentalDal;
         }
 
+        [ValidationAspect(typeof(RentalValidator))]
         public IResult Add(Rental entity)
         {
-            if (entity.ReturnDate != null)
-            {
-                _rentalDal.Add(entity);
-                return new SuccessDataResult<Rental>();
-            }
-            return new ErrorDataResult<Rental>("Araç teslim edilmemiştir.");
+
+            _rentalDal.Add(entity);
+
+            return new SuccessDataResult<Rental>();
         }
 
         public IDataResult<List<Rental>> GetAll()

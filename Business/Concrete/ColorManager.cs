@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.AutoFac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -17,13 +19,12 @@ namespace Business.Concrete
             _colorDal = colorDal;
         }
 
+        [ValidationAspect(typeof(ColorValidator))]
         public IResult Add(Color entity)
         {
-            if (entity.ColorName.Length < 2)
-            {
-                return new ErrorDataResult<Color>("Renk ismi en az 3 karakter olmalıdır.");
-            }
+            
             _colorDal.Add(entity);
+
             return new SuccessDataResult<Color>();
         }
 

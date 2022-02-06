@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.AutoFac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -18,14 +20,12 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
+        [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car entity)
         {
-            if (entity.DailyPrice > 0)
-            {
-                _carDal.Add(entity);
-                return new SuccessDataResult<Car>("Ekleme İşlemi Başarılı!");
-            }
-            return new ErrorDataResult<Car>("Günlük limit değeri 0 ve aşağısı olamaz!");
+            _carDal.Add(entity);
+
+            return new SuccessDataResult<Car>("Ekleme İşlemi Başarılı!");
         }
 
         public IDataResult<List<Car>> GetAll()
